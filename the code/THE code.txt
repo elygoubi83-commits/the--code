@@ -1,0 +1,33 @@
+import turtle
+
+win = turtle.Screen()
+win.title("ana")
+win.bgcolor("black")
+win.setup(900, 700)
+
+t = turtle.Turtle()
+t.speed(0)
+t.color("lime")
+t.hideturtle()
+t.left(90)
+t.penup()
+t.goto(0, -300)
+t.pendown()
+
+def tree(length, level):
+    if length < 10 or level == 0:
+        return
+
+    t.forward(length)
+
+    angles = [-30, -10, 10, 30]
+    for angle in angles:
+        t.left(angle)
+        tree(length * 0.7, level - 1)
+        t.right(angle)
+
+    t.backward(length)
+
+tree(120, 8)
+
+win.mainloop()
